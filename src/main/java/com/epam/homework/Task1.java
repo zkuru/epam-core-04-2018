@@ -35,23 +35,35 @@ public class Task1 {
      * MAX (35): Приятна мне твоя прощальная краса —
      */
     public static void main(String[] args) {
+        String tmp;
+        int tmpLength;
+        int minLength;
+        int maxLength;
+
         Scanner in = new Scanner(System.in);
         int N = in.nextInt();
         in.nextLine();
 
         String minString = in.nextLine();
+        minLength = minString.length();
+
         String maxString = minString;
+        maxLength = minLength;
 
         for (int i = 1; i < N; i++) {
-            String tmp =  in.nextLine();
-            if (minString.length() >= tmp.length()) {
+            tmp =  in.nextLine();
+            tmpLength = tmp.length();
+
+            if (minLength >= tmpLength) {
                 minString = tmp;
-            } else if (maxString.length() <= tmp.length()) {
+                minLength = tmpLength;
+            } else if (maxLength <= tmpLength) {
                 maxString = tmp;
+                maxLength = tmpLength;
             }
         }
 
-         System.out.println("MIN (" + minString.length() + "): " + minString);
-         System.out.println("MAX (" + maxString.length() + "): " + maxString);
+        System.out.println("MIN (" + minLength + "): " + minString);
+        System.out.println("MAX (" + maxLength + "): " + maxString);
     }
 }
