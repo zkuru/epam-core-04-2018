@@ -1,5 +1,7 @@
 package com.epam.homework;
 
+import java.util.Scanner;
+
 public class Task4 {
 
     /**
@@ -26,8 +28,27 @@ public class Task4 {
      * a
      */
     public static void main(String[] args) {
-        // TODO реализация
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        in.nextLine();
 
-        // TODO System.out.println(wordWithMinimalNumDiffLetters);
+        String tmp;
+        int tmpLength;
+
+        String minString = in.next();
+        int minLength = minString.length();
+
+
+        for (int i = 1; i < N; i++) {
+            tmp = in.next();
+            tmpLength = tmp.length();
+
+            if (tmpLength < minLength) {
+                minLength = tmpLength;
+                minString = tmp;
+            }
+        }
+
+        System.out.println(minString);
     }
 }
