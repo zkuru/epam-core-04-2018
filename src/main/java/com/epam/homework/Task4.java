@@ -1,5 +1,6 @@
 package com.epam.homework;
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Task4 {
@@ -32,23 +33,25 @@ public class Task4 {
         int N = in.nextInt();
         in.nextLine();
 
-        String tmp;
-        int tmpLength;
+        String tmpWord;
+        String wordWithMinimalNumDiffLetters = "";
 
-        String minString = in.next();
-        int minLength = minString.length();
+        HashSet<Character> uniqueCharArray;
+        int minCharArraySize = Integer.MAX_VALUE;
 
+        for (int i = 0; i < N; i++) {
+            uniqueCharArray = new HashSet<>();;
+            tmpWord = in.next();
 
-        for (int i = 1; i < N; i++) {
-            tmp = in.next();
-            tmpLength = tmp.length();
-
-            if (tmpLength < minLength) {
-                minLength = tmpLength;
-                minString = tmp;
+            for (int j = 0; j < tmpWord.length() ; j++) {
+                uniqueCharArray.add(tmpWord.charAt(j));
+            }
+            if (uniqueCharArray.size() <  minCharArraySize) {
+                minCharArraySize = uniqueCharArray.size();
+                wordWithMinimalNumDiffLetters = tmpWord;
             }
         }
 
-        System.out.println(minString);
+        System.out.println(wordWithMinimalNumDiffLetters);
     }
 }
