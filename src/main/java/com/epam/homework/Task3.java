@@ -49,11 +49,9 @@ public class Task3 {
         for (int i = 0; i < N; i++) {
             strArray[i] = in.nextLine();
             average += strArray[i].length();
-
-            if (i == N-1) {
-                average /= N;
-            }
         }
+        
+        average /= N;
 
         System.out.println("AVERAGE (" + average + ")");
         for(String str : strArray) {
