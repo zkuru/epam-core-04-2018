@@ -35,9 +35,7 @@ public class Task1 {
      * MAX (35): Приятна мне твоя прощальная краса —
      */
     public static void main(String[] args) {
-        String tmp;
-        int tmpLength;
-
+        
         Scanner in = new Scanner(System.in);
         int N = in.nextInt();
         in.nextLine();
@@ -49,8 +47,8 @@ public class Task1 {
         int maxLength = minLength;
 
         for (int i = 1; i < N; i++) {
-            tmp =  in.nextLine();
-            tmpLength = tmp.length();
+            String tmp =  in.nextLine();
+            int tmpLength = tmp.length();
 
             if (minLength >= tmpLength) {
                 minString = tmp;
