@@ -1,5 +1,8 @@
 package com.epam.homework;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class Task5 {
 
     /**
@@ -25,8 +28,38 @@ public class Task5 {
      * 2
      */
     public static void main(String[] args) {
-        // TODO реализация
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        in.nextLine();
 
-        // TODO System.out.println(countWordsWithSameNumVowelsAndConsonants);
+        int countWords = 0;
+
+        for (int i = 0; i < N; i++) {
+            String currWord = in.next();
+            if (checkWord(currWord)) {
+                countWords++;
+            }
+        }
+        System.out.println(countWords);
+    }
+
+    private static boolean checkWord(String str) {
+
+        int vocalCounter = 0;
+        int consonantCounter = 0;
+
+        if (str.matches("(?i:[a-z]+)")) {
+            char[] charArray = str.toCharArray();
+            Character[] vowelsArray = {'a','A','e','E','i','I','o','O','u','U','y','Y'};
+
+            for (Character ch: charArray) {
+                if (Arrays.asList(vowelsArray).contains(ch)) {
+                    vocalCounter++;
+                } else {
+                    consonantCounter++;
+                }
+            }
+        }
+        return vocalCounter == consonantCounter;
     }
 }
