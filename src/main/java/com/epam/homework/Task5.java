@@ -45,25 +45,22 @@ public class Task5 {
 
     private static boolean checkWord(String str) {
 
-        int vowelsCounter = 0;
-        int consonantCounter = 0;
-
-        if (str.matches("^[a-zA-Z]+$")) {
+        if (str.matches("[a-zA-Z]+")) {
             char[] charArray = str.toCharArray();
             Character[] vowelsArray = {'a','A','e','E','i','I','o','O','u','U','y','Y'};
 
-            System.out.println(str);
+            int vowelsCounter = 0;
+            int consonantCounter = 0;
 
             for (Character ch: charArray) {
                 if (Arrays.asList(vowelsArray).contains(ch)) {
                     vowelsCounter++;
-                    System.out.println("vowel " + vowelsCounter);
                 } else {
                     consonantCounter++;
-                    System.out.println("cons " + consonantCounter);
                 }
             }
+            return vowelsCounter == consonantCounter;
         }
-        return vowelsCounter == consonantCounter;
+        return false;
     }
 }
