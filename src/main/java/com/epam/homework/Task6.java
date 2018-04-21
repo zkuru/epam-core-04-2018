@@ -1,5 +1,7 @@
 package com.epam.homework;
 
+import java.util.Scanner;
+
 public class Task6 {
 
     /**
@@ -36,6 +38,33 @@ public class Task6 {
      * NOT FOUND
      */
     public static void main(String[] args) {
-        // TODO реализация
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        in.nextLine();
+
+        String result = "NOT FOUND";
+
+        for (int i = 0; i < N; i++) {
+            String currWord = in.next();
+
+            if (currWord.length() > 1) {
+                String currWordInLowerCase = currWord.toLowerCase();
+                boolean flag = false;
+
+                for (int j = 0; j < currWordInLowerCase.length() - 1; j++) {
+                    if (currWordInLowerCase.charAt(j) < currWordInLowerCase.charAt(j + 1)) {
+                        flag = true;
+                    } else {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    result = currWord;
+                    break;
+                }
+            }
+        }
+        System.out.println(result);
     }
 }
