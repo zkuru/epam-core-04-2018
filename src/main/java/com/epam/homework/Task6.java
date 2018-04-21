@@ -49,17 +49,17 @@ public class Task6 {
 
             if (currWord.length() > 1) {
                 String currWordInLowerCase = currWord.toLowerCase();
-                boolean flag = false;
+                boolean isCharsCodeInAscendingOrder = false;
 
                 for (int j = 0; j < currWordInLowerCase.length() - 1; j++) {
                     if (currWordInLowerCase.charAt(j) < currWordInLowerCase.charAt(j + 1)) {
-                        flag = true;
+                        isCharsCodeInAscendingOrder = true;
                     } else {
-                        flag = false;
+                        isCharsCodeInAscendingOrder = false;
                         break;
                     }
                 }
-                if (flag) {
+                if (isCharsCodeInAscendingOrder) {
                     result = currWord;
                     break;
                 }
