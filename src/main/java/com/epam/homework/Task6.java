@@ -42,6 +42,7 @@ public class Task6 {
         int N = in.nextInt();
         in.nextLine();
 
+
         String result = "NOT FOUND";
 
         for (int i = 0; i < N; i++) {
@@ -49,12 +50,10 @@ public class Task6 {
 
             if (currWord.length() > 1) {
                 String currWordInLowerCase = currWord.toLowerCase();
-                boolean isCharsCodeInAscendingOrder = false;
+                boolean isCharsCodeInAscendingOrder = true;
 
                 for (int j = 0; j < currWordInLowerCase.length() - 1; j++) {
-                    if (currWordInLowerCase.charAt(j) < currWordInLowerCase.charAt(j + 1)) {
-                        isCharsCodeInAscendingOrder = true;
-                    } else {
+                    if (currWordInLowerCase.charAt(j) >= currWordInLowerCase.charAt(j + 1)) {
                         isCharsCodeInAscendingOrder = false;
                         break;
                     }
