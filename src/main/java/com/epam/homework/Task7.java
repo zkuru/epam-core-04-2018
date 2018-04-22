@@ -1,5 +1,7 @@
 package com.epam.homework;
 
+import java.util.*;
+
 public class Task7 {
 
     /**
@@ -28,6 +30,30 @@ public class Task7 {
      * The is a
      */
     public static void main(String[] args) {
-        // TODO реализация
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+        in.nextLine();
+
+        Set<String> wordsWithUniqueLetters = new HashSet<>();
+
+        for (int i = 0; i < N; i++) {
+            Set<Character> uniqueCharArray = new HashSet<>();
+
+            String currWord = in.next().toLowerCase();
+
+            for (int j = 0; j < currWord.length(); j++) {
+                uniqueCharArray.add(currWord.charAt(j));
+            }
+
+            if (uniqueCharArray.size() == currWord.length()) {
+                wordsWithUniqueLetters.add(currWord);
+            }
+        }
+
+        if (wordsWithUniqueLetters.isEmpty()) {
+            System.out.println("NOT FOUND");
+        } else {
+            System.out.println(String.join(" ", wordsWithUniqueLetters));
+        }
     }
 }
