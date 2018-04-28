@@ -40,7 +40,8 @@ public class Task8 {
 
         for (int i = 0; i < N; i++) {
             String currentWord = in.next();
-            if (isNumber(currentWord) && isPalindrome(currentWord)) {
+            if (!currentWord.equals(result) && isNumber(currentWord)
+                    && isPalindrome(currentWord)) {
                 result = currentWord;
                 palindromeCount++;
                 if (palindromeCount == 2) {
