@@ -50,6 +50,8 @@ public class Task9 {
      * Выходные данные:
      * NO ROOTS
      */
+    private static final double EPSILON = 0.00000001;
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
@@ -64,7 +66,7 @@ public class Task9 {
             double root1 = (-b - sqrt(discriminant)) / (2 * a);
             double root2 = (-b + sqrt(discriminant)) / (2 * a);
             System.out.println(decimalFormat.format(root1) + ", " + decimalFormat.format(root2));
-        } else if (discriminant == 0) {
+        } else if (abs(discriminant - 0) < EPSILON) {
             double root = -b / (2 * a);
             System.out.println(decimalFormat.format(root));
         } else {
