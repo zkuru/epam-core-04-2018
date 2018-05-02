@@ -1,5 +1,7 @@
 package com.epam.homework;
 
+import java.util.Scanner;
+
 public class Task10 {
 
     /**
@@ -30,6 +32,14 @@ public class Task10 {
      * YES
      */
     public static void main(String[] args) {
-        // TODO реализация
+        Scanner in = new Scanner(System.in);
+        int inputNumber = in.nextInt();
+
+        System.out.println(isNumberAPowerOfTwo(inputNumber) ? "YES" : "NO");
+
+    }
+
+    private static boolean isNumberAPowerOfTwo(int number) {
+        return ((number > 0) && ((number - 1) & number) == 0);
     }
 }
