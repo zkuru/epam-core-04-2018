@@ -2,6 +2,7 @@ package com.epam.homework;
 
 import java.util.Scanner;
 
+
 public class Task11 {
 
     /**
@@ -38,6 +39,6 @@ public class Task11 {
     }
 
     private static int sumOfDigitsInNumber(int number) {
-        return (number != 0) ? (number % 10) + sumOfDigitsInNumber(number / 10) : 0;
+        return (number != 0) ? Math.abs(number % 10) + sumOfDigitsInNumber(number / 10) : 0;
     }
 }
