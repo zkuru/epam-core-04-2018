@@ -65,6 +65,7 @@ public class Task13 {
 
     private static int[][] cyclicShiftOfMatrix(int[][] matrix, int shift) {
         int dimension = matrix.length;
+        shift %= matrix.length;
         int[][] resultMatrix = new int[dimension][dimension];
 
         if (shift < 0) {
