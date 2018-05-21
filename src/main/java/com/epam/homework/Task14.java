@@ -38,7 +38,7 @@ public class Task14 {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        int numberOfElements = Integer.parseInt(scanner.nextLine());
+        int numberOfElements = scanner.nextInt();
 
         int[] elements = new int[numberOfElements];
         for (int i = 0; i < numberOfElements; i++) {
