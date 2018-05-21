@@ -57,8 +57,8 @@ public class Task14 {
             } else {
                 if (tmpSize > maxSize) {
                     maxSize = tmpSize;
-                    tmpSize = 1;
                 }
+                tmpSize = 1;
             }
         }
         return (maxSize == tmpSize) ? 0 :
