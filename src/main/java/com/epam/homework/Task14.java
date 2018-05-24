@@ -54,8 +54,10 @@ public class Task14 {
         for (int i = 0; i < elements.length - 1; i++) {
             if (elements[i] < elements[i + 1]) {
                 tmpSize++;
-            } else if (tmpSize > maxSize) {
-                maxSize = tmpSize;
+            } else {
+                if (tmpSize > maxSize) {
+                    maxSize = tmpSize;
+                }
                 tmpSize = 1;
             }
         }
