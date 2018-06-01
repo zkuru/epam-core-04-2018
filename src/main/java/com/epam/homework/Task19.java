@@ -44,12 +44,18 @@ public class Task19 {
         int[][] matrix = readMatrix(scanner);
 
         Set<Integer> zeroRows = new HashSet<>();
+        Set<Integer> zeroColumns = new HashSet<>();
+
+        getZeroRowsAndColumns(matrix, zeroRows, zeroColumns);
+
+        printMatrix(removeZeroRowsAndColumns(matrix, zeroRows, zeroColumns));
+    }
+
+    private static void getZeroRowsAndColumns(int[][] matrix, Set<Integer> zeroRows, Set<Integer> zeroColumns) {
 
         for (int i = 0; i < matrix.length; i++) {
             zeroRows.add(i);
         }
-
-        Set<Integer> zeroColumns = new HashSet<>();
 
         for (int i = 0; i < matrix.length; i++) {
             boolean isZeroColumn = true;
@@ -63,9 +69,6 @@ public class Task19 {
                 zeroColumns.add(i);
             }
         }
-
-        printMatrix(removeZeroRowsAndColumns(matrix, zeroRows, zeroColumns));
-
     }
 
     private static int[][] removeZeroRowsAndColumns(int[][] matrix, Set<Integer> zeroRows, Set<Integer> zeroColumns) {
