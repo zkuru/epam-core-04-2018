@@ -41,28 +41,28 @@ public class Task20 {
      */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int row = scanner.nextInt();
-        int column = scanner.nextInt();
+        int targetRow = scanner.nextInt();
+        int targetColumn = scanner.nextInt();
         int[][] matrix = readMatrix(scanner);
 
         MinElement minElement = getPositionOfMinElement(matrix);
 
-        swapRows(matrix, row, minElement.rowIndex);
-        swapColumns(matrix, column, minElement.columnIndex);
+        swapRows(matrix, targetRow, minElement.rowIndex);
+        swapColumns(matrix, targetColumn, minElement.columnIndex);
         printMatrix(matrix);
     }
 
-    private static void swapRows(int[][] matrix, int a, int b) {
-        int[] tmp = matrix[a];
-        matrix[a] = matrix[b];
-        matrix[b] = tmp;
+    private static void swapRows(int[][] matrix, int targetRow, int row) {
+        int[] tmp = matrix[targetRow];
+        matrix[targetRow] = matrix[row];
+        matrix[row] = tmp;
     }
 
-    private static void swapColumns(int[][] matrix, int a, int b) {
+    private static void swapColumns(int[][] matrix, int targetCol, int col) {
         for (int i = 0; i < matrix.length; i++) {
-            int tmp = matrix[i][a];
-            matrix[i][a] = matrix[i][b];
-            matrix[i][b] = tmp;
+            int tmp = matrix[i][targetCol];
+            matrix[i][targetCol] = matrix[i][col];
+            matrix[i][col] = tmp;
         }
     }
 
