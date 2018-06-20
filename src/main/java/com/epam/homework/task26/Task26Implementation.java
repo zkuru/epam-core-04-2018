@@ -27,20 +27,21 @@ public class Task26Implementation implements Task26 {
 
     private void addIntersectionPoint(TreeMap<Double, Set<I2DPoint>> mapOfIntersections, I2DPoint point) {
 
-            if (!mapOfIntersections.containsKey(point.getX())) {
-                Set<I2DPoint> hashSet = new HashSet<>();
-                hashSet.add(point);
-                mapOfIntersections.put(point.getX(), hashSet);
-            } else {
-                // если уже есть такой ключ, добавляем в Set точку
-                mapOfIntersections.merge(point.getX(), mapOfIntersections.get(point.getX()),
-                        (a, b) -> {
-                            // добавляем точку в Set
-                            mapOfIntersections.get(point.getX()).add(point);
-                            //возвращаем новый Set
-                            return mapOfIntersections.get(point.getX());
-                        });
-            }
+        double key = point.getX();
+        if (!mapOfIntersections.containsKey(key)) {
+            Set<I2DPoint> hashSet = new HashSet<>();
+            hashSet.add(point);
+            mapOfIntersections.put(key, hashSet);
+        } else {
+            // если уже есть такой ключ, добавляем в Set точку
+            mapOfIntersections.merge(key, mapOfIntersections.get(key),
+                    (a, b) -> {
+                        // добавляем точку в Set
+                        mapOfIntersections.get(key).add(point);
+                        //возвращаем новый Set
+                        return mapOfIntersections.get(key);
+                    });
+        }
 
     }
 
