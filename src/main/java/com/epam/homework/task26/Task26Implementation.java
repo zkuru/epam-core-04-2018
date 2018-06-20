@@ -9,29 +9,36 @@ public class Task26Implementation implements Task26 {
     @Override
     public Set<I2DPoint> analyze(Set<ISegment> segments) {
 
-        double minAbsciss = Integer.MAX_VALUE;
-
         List<ISegment> segmentList = new ArrayList<>(segments);
 
-        Set<I2DPoint> setOfIntersectionPoints = new HashSet<>();
+        // TreeMap, чтобы в ключе хранить абсциссу, а в значении - точки
+        // сортировка по ключу => firstEntry().getValue() вернет точки c минимальной абсциссой
+
+        TreeMap<Double, Set<I2DPoint>> mapOfIntersections = new TreeMap<>();
 
         for (int i = 0; i < segmentList.size(); i++) {
             for (int j = i + 1; j < segmentList.size(); j++) {
                 I2DPoint point = getIntersectionPoint(segmentList.get(i), segmentList.get(j));
                 if (point != null) {
-                    setOfIntersectionPoints.add(point);
-                    if (Double.compare(minAbsciss, point.getX()) > 0) {
-                        minAbsciss = point.getX();
+                    if (!mapOfIntersections.containsKey(point.getX())) {
+                        Set<I2DPoint> hashSet = new HashSet<>();
+                        hashSet.add(point);
+                        mapOfIntersections.put(point.getX(), hashSet);
+                    } else {
+                        // если уже есть такой ключ, добавляем в Set точку
+                        mapOfIntersections.merge(point.getX(), mapOfIntersections.get(point.getX()),
+                                (a, b) -> {
+                                    // добавляем точку в Set
+                                    mapOfIntersections.get(point.getX()).add(point);
+                                    //возвращаем новый Set
+                                    return mapOfIntersections.get(point.getX());
+                                });
                     }
                 }
             }
         }
 
-        double min = minAbsciss;
-
-        setOfIntersectionPoints.removeIf(e -> e.getX() > min);
-
-        return setOfIntersectionPoints;
+        return mapOfIntersections.firstEntry().getValue();
     }
 
     private I2DPoint getIntersectionPoint(ISegment segment1, ISegment segment2) {
